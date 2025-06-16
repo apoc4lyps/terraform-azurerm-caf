@@ -22,6 +22,7 @@ resource "azurerm_managed_disk" "disk" {
   zone                   = try(each.value.zone, each.value.zones[0], null)
   disk_iops_read_write   = try(each.value.disk_iops_read_write, null)
   disk_mbps_read_write   = try(each.value.disk.disk_mbps_read_write, null)
+  max_shares             = try(each.value.disk.max_shares, null)
   tags                   = merge(local.tags, try(each.value.tags, {}))
   disk_encryption_set_id = can(each.value.disk_encryption_set_id) ? each.value.disk_encryption_set_id : can(each.value.disk_encryption_set_key) ? var.disk_encryption_sets[try(each.value.lz_key, var.client_config.landingzone_key)][each.value.disk_encryption_set_key].id : null
   lifecycle {
