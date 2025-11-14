@@ -71,6 +71,7 @@ locals {
   combined_objects_database_migration_services                    = merge(tomap({ (local.client_config.landingzone_key) = module.database_migration_services }), lookup(var.remote_objects, "database_migration_services", {}))
   combined_objects_databricks_workspaces                          = merge(tomap({ (local.client_config.landingzone_key) = module.databricks_workspaces }), lookup(var.remote_objects, "databricks_workspaces", {}), lookup(var.data_sources, "databricks_workspaces", {}))
   combined_objects_databricks_access_connectors                   = merge(tomap({ (local.client_config.landingzone_key) = module.databricks_access_connectors }), lookup(var.remote_objects, "databricks_access_connectors", {}), lookup(var.data_sources, "databricks_access_connectors", {}))
+  combined_objects_fabric_capacities                              = merge(tomap({ (local.client_config.landingzone_key) = module.fabric_capacities }), lookup(var.remote_objects, "fabric_capacities", {}), lookup(var.data_sources, "fabric_capacities", {}))
   combined_objects_ddos_services                                  = merge(tomap({ (local.client_config.landingzone_key) = azurerm_network_ddos_protection_plan.ddos_protection_plan }), lookup(var.remote_objects, "ddos_services", {}), lookup(var.remote_objects, "ddos_services", {}))
   combined_objects_dedicated_host_groups                          = merge(tomap({ (local.client_config.landingzone_key) = module.dedicated_host_groups }), lookup(var.remote_objects, "dedicated_host_groups", {}), lookup(var.data_sources, "dedicated_host_groups", {}))
   combined_objects_dedicated_hosts                                = merge(tomap({ (local.client_config.landingzone_key) = module.dedicated_hosts }), lookup(var.remote_objects, "dedicated_hosts", {}), lookup(var.data_sources, "dedicated_hosts", {}))
@@ -165,7 +166,7 @@ locals {
   combined_objects_relay_namespace                               = merge(tomap({ (local.client_config.landingzone_key) = module.relay_namespace }), lookup(var.remote_objects, "relay_namespace", {}))
   combined_objects_resource_groups                               = merge(tomap({ (local.client_config.landingzone_key) = merge(local.resource_groups, lookup(var.data_sources, "resource_groups", {})) }), lookup(var.remote_objects, "resource_groups", {}))
   combined_objects_route_tables                                  = merge(tomap({ (local.client_config.landingzone_key) = module.route_tables }), lookup(var.remote_objects, "route_tables", {}))
-  combined_objects_subnet_service_endpoint_storage_policies     = merge(tomap({ (local.client_config.landingzone_key) = module.subnet_service_endpoint_storage_policies }), lookup(var.remote_objects, "subnet_service_endpoint_storage_policies", {}), lookup(var.data_sources, "subnet_service_endpoint_storage_policies", {}))
+  combined_objects_subnet_service_endpoint_storage_policies      = merge(tomap({ (local.client_config.landingzone_key) = module.subnet_service_endpoint_storage_policies }), lookup(var.remote_objects, "subnet_service_endpoint_storage_policies", {}), lookup(var.data_sources, "subnet_service_endpoint_storage_policies", {}))
   combined_objects_search_services                               = merge(tomap({ (local.client_config.landingzone_key) = module.search_service }), lookup(var.remote_objects, "search_services", {}), lookup(var.data_sources, "search_services", {}))
   combined_objects_sentinel_watchlists                           = merge(tomap({ (local.client_config.landingzone_key) = module.sentinel_watchlists }), lookup(var.remote_objects, "sentinel_watchlists", {}))
   combined_objects_service_plans                                 = merge(tomap({ (local.client_config.landingzone_key) = module.service_plans }), lookup(var.remote_objects, "service_plans", {}), lookup(var.data_sources, "service_plans", {}))
@@ -175,6 +176,7 @@ locals {
   combined_objects_signalr_services                              = merge(tomap({ (local.client_config.landingzone_key) = module.signalr_services }), lookup(var.remote_objects, "signalr_services", {}), lookup(var.data_sources, "signalr_services", {}))
   combined_objects_storage_account_file_shares                   = merge(tomap({ (local.client_config.landingzone_key) = module.storage_account_file_shares }), lookup(var.remote_objects, "storage_account_file_shares", {}))
   combined_objects_storage_account_queues                        = merge(tomap({ (local.client_config.landingzone_key) = module.storage_account_queues }), lookup(var.remote_objects, "storage_account_queues", {}))
+  combined_objects_storage_account_static_websites               = merge(tomap({ (local.client_config.landingzone_key) = module.storage_account_static_websites }), lookup(var.remote_objects, "storage_account_static_websites", {}))
   combined_objects_storage_accounts                              = merge(tomap({ (local.client_config.landingzone_key) = merge(module.storage_accounts, lookup(var.data_sources, "storage_accounts", {})) }), lookup(var.remote_objects, "storage_accounts", {}))
   combined_objects_storage_containers                            = merge(tomap({ (local.client_config.landingzone_key) = module.storage_containers }), lookup(var.remote_objects, "storage_containers", {}), lookup(var.data_sources, "storage_containers", {}))
   combined_objects_synapse_workspaces                            = merge(tomap({ (local.client_config.landingzone_key) = module.synapse_workspaces }), lookup(var.remote_objects, "synapse_workspaces", {}), lookup(var.data_sources, "synapse_workspaces", {}))
@@ -206,6 +208,7 @@ locals {
   combined_objects_wvd_host_pools                                = merge(tomap({ (local.client_config.landingzone_key) = module.wvd_host_pools }), lookup(var.remote_objects, "wvd_host_pools", {}))
   combined_objects_wvd_workspaces                                = merge(tomap({ (local.client_config.landingzone_key) = module.wvd_workspaces }), lookup(var.remote_objects, "wvd_workspaces", {}))
   combined_objects_palo_alto_cloudngfws                          = merge(tomap({ (local.client_config.landingzone_key) = module.palo_alto_cloudngfws }), lookup(var.remote_objects, "palo_alto_cloudngfws", {}), lookup(var.data_sources, "palo_alto_cloudngfws", {}))
+  combined_objects_grafana                                       = merge(tomap({ (local.client_config.landingzone_key) = module.grafana }), lookup(var.remote_objects, "grafana", {}), lookup(var.data_sources, "grafana", {}))
 
   combined_objects_subscriptions = merge(
     tomap(

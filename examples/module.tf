@@ -31,6 +31,10 @@ module "example" {
     aadb2c_directory = var.aadb2c_directory
   }
 
+  analytics = {
+    fabric_capacities = var.fabric_capacities
+  }
+
   azuread = {
     azuread_administrative_unit_members = var.azuread_administrative_unit_members
     azuread_administrative_units        = var.azuread_administrative_units
@@ -331,11 +335,12 @@ module "example" {
     shared_image_galleries         = var.shared_image_galleries
   }
   storage = {
-    netapp_accounts             = var.netapp_accounts
-    storage_account_blobs       = var.storage_account_blobs
-    storage_account_file_shares = var.storage_account_file_shares
-    storage_account_queues      = var.storage_account_queues
-    storage_containers          = var.storage_containers
+    netapp_accounts                 = var.netapp_accounts
+    storage_account_blobs           = var.storage_account_blobs
+    storage_account_file_shares     = var.storage_account_file_shares
+    storage_account_queues          = var.storage_account_queues
+    storage_account_static_websites = var.storage_account_static_websites
+    storage_containers              = var.storage_containers
 
   }
   webapp = {
@@ -440,6 +445,11 @@ module "example" {
     iot_central_application             = var.iot_central_application
   }
   powerbi_embedded = var.powerbi_embedded
+
+  dashboards = {
+    grafana = var.grafana
+  }
+
 
   load_test = var.load_test
 

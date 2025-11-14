@@ -375,7 +375,15 @@ variable "mssql_mi_secondary_tdes" {
   type    = any
   default = {}
 }
+variable "storage" {
+  type    = any
+  default = {}
+}
 variable "storage_accounts" {
+  type    = any
+  default = {}
+}
+variable "storage_account_static_websites" {
   type    = any
   default = {}
 }
@@ -552,6 +560,10 @@ variable "databricks_access_connectors" {
   type    = any
   default = {}
 }
+variable "fabric_capacities" {
+  type    = any
+  default = {}
+}
 variable "machine_learning_workspaces" {
   type    = any
   default = {}
@@ -565,6 +577,10 @@ variable "monitor_autoscale_settings" {
   default = {}
 }
 variable "monitoring" {
+  type    = any
+  default = {}
+}
+variable "grafana" {
   type    = any
   default = {}
 }

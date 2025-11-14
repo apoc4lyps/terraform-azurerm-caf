@@ -15,6 +15,9 @@ resource "random_string" "suffix" {
 }
 
 locals {
+  analytics = {
+    fabric_capacities = try(var.analytics.fabric_capacities, {})
+  }
   aadb2c = {
     aadb2c_directory = try(var.aadb2c.aadb2c_directory, {})
   }
@@ -145,16 +148,17 @@ locals {
     purview_accounts = try(var.purview.purview_accounts, {})
   }
   database = {
-    app_config                         = try(var.database.app_config, {})
-    azurerm_redis_caches               = try(var.database.azurerm_redis_caches, {})
-    cosmos_dbs                         = try(var.database.cosmos_dbs, {})
-    cosmosdb_sql_databases             = try(var.database.cosmosdb_sql_databases, {})
-    cosmosdb_role_definitions          = try(var.database.cosmosdb_role_definitions, {})
-    cosmosdb_role_mapping              = try(var.database.cosmosdb_role_mapping, {})
-    database_migration_services        = try(var.database.database_migration_services, {})
-    database_migration_projects        = try(var.database.database_migration_projects, {})
-    databricks_workspaces              = try(var.database.databricks_workspaces, {})
-    databricks_access_connectors       = try(var.database.databricks_access_connectors, {})
+    app_config                   = try(var.database.app_config, {})
+    azurerm_redis_caches         = try(var.database.azurerm_redis_caches, {})
+    cosmos_dbs                   = try(var.database.cosmos_dbs, {})
+    cosmosdb_sql_databases       = try(var.database.cosmosdb_sql_databases, {})
+    cosmosdb_role_definitions    = try(var.database.cosmosdb_role_definitions, {})
+    cosmosdb_role_mapping        = try(var.database.cosmosdb_role_mapping, {})
+    database_migration_services  = try(var.database.database_migration_services, {})
+    database_migration_projects  = try(var.database.database_migration_projects, {})
+    databricks_workspaces        = try(var.database.databricks_workspaces, {})
+    databricks_access_connectors = try(var.database.databricks_access_connectors, {})
+    # fabric_capacities moved to analytics rail
     machine_learning_workspaces        = try(var.database.machine_learning_workspaces, {})
     mssql_databases                    = try(var.database.mssql_databases, {})
     mssql_elastic_pools                = try(var.database.mssql_elastic_pools, {})
@@ -454,11 +458,12 @@ locals {
   }
 
   storage = {
-    netapp_accounts             = try(var.storage.netapp_accounts, {})
-    storage_account_blobs       = try(var.storage.storage_account_blobs, {})
-    storage_account_file_shares = try(var.storage.storage_account_file_shares, {})
-    storage_account_queues      = try(var.storage.storage_account_queues, {})
-    storage_containers          = try(var.storage.storage_containers, {})
+    netapp_accounts                 = try(var.storage.netapp_accounts, {})
+    storage_account_blobs           = try(var.storage.storage_account_blobs, {})
+    storage_account_file_shares     = try(var.storage.storage_account_file_shares, {})
+    storage_account_queues          = try(var.storage.storage_account_queues, {})
+    storage_account_static_websites = try(var.storage.storage_account_static_websites, {})
+    storage_containers              = try(var.storage.storage_containers, {})
   }
 
   webapp = {
@@ -532,6 +537,9 @@ locals {
     maintenance_assignment_virtual_machine = try(var.maintenance.maintenance_assignment_virtual_machine, {})
   }
 
+  dashboards = {
+    grafana = try(var.dashboards.grafana, {})
+  }
 
   load_test = try(var.load_test, {})
 }
